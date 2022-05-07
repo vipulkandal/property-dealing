@@ -5,8 +5,9 @@ import HomePage from "./HomePage";
 export default function Login(props) {
   const [currentUserName, setUserName] = useState("");
   const [currentPassword, setPassword] = useState("");
+  const [isValidCredentials, setIsValidCredentials] = useState(true);
+
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
 
 
@@ -14,6 +15,7 @@ export default function Login(props) {
   const clearValues = () => {
     setUserName("");
     setPassword("");
+    setIsValidCredentials(true);
   };
 
   const userArr = [
@@ -35,16 +37,8 @@ export default function Login(props) {
     navigate("/SignUp");
   };
 
-  // Set Alert if password is wrong
-  const showAlert = (message, type) => {
-    setAlert({
-      msg: message,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 1500);
-  };
+  // let isValidCredentials = false;
+
 
   // Submit: fetch local storage values
   // If it matches with current username and passowrd then Welcome ........ to website
@@ -53,10 +47,11 @@ export default function Login(props) {
 
     let authenticatedUser = userArr.find(
       (user) =>
-        user.name === currentUserName && user.password === currentPassword
+        user.name.toLocaleLowerCase === currentUserName.toLocaleLowerCase && user.password === currentPassword
     );
 
     if (authenticatedUser) {
+      setIsValidCredentials(true);
       sessionStorage.setItem(
         "authenticatedUserObj",
         JSON.stringify({
@@ -67,7 +62,7 @@ export default function Login(props) {
       navigate("/HomePage");
       console.log("Login Successful");
     } else {
-      console.log("yaaaaaaaaa")
+      setIsValidCredentials(false);
       console.log("Invalid UserName or Password");
     }
   };
@@ -82,6 +77,9 @@ export default function Login(props) {
       navigate("/Login");
     }
   }, []);
+
+
+
 
   return (
     <>
@@ -112,6 +110,9 @@ export default function Login(props) {
               className="form-control"
               placeholder="Password"
             />
+            <div style={isValidCredentials ? { visibility: 'hidden' } : { visibility: 'visible' }}>
+              <p style={{ color: "red" }}>* Invalid login credentials</p>
+            </div>
           </div>
 
           <button
