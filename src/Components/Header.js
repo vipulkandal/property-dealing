@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../images/home-06.jpg";
 import { useNavigate } from "react-router-dom";
+import "./header.css"
 
 const Header = () => {
   let navigate = useNavigate();
@@ -14,24 +15,21 @@ const Header = () => {
   };
 
   return (
-    <div className="row">
-      <div className="col-lg-3">
-        <div style={{ height: "100px" }}>
-          <img src={logo} height="40" />
-        </div>
-      </div>
-      <div className="col-lg-6">
-        <h2>
-          Welcome{" "}
-          {displayUserName.charAt(0).toUpperCase() + displayUserName.slice(1)}
-        </h2>
-      </div>
-      <div className="col-lg-3">
+
+    <div className="row ">
+      <ul >
+        <li ><a href="#buy">Buy</a></li>
+        <li><a href="#sell">Sell</a></li>
+        <li><a href="#rent">Rent</a></li>
+        <li><a href="#just-sold">Just Sold</a></li>
+      </ul>
+      <div >
         <button onClick={() => logout()} className="btn btn-secondary">
           Log Out
         </button>
       </div>
     </div>
+
   );
 };
 export default Header;

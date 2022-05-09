@@ -6,7 +6,6 @@ export default function Login(props) {
   const [currentUserName, setUserName] = useState("");
   const [currentPassword, setPassword] = useState("");
   const [isValidCredentials, setIsValidCredentials] = useState(true);
-
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const navigate = useNavigate();
 
@@ -37,9 +36,6 @@ export default function Login(props) {
     navigate("/SignUp");
   };
 
-  // let isValidCredentials = false;
-
-
   // Submit: fetch local storage values
   // If it matches with current username and passowrd then Welcome ........ to website
   let onSubmit = (e) => {
@@ -60,10 +56,8 @@ export default function Login(props) {
         })
       );
       navigate("/HomePage");
-      console.log("Login Successful");
     } else {
       setIsValidCredentials(false);
-      console.log("Invalid UserName or Password");
     }
   };
 
