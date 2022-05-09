@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
-import Footer from "./Footer";
+// import Footer from "./Footer";
+import SearchBox from "./SearchBox";
 
 export default function HomePage(props) {
   let UserDataObj = JSON.parse(localStorage.getItem("userDataObj"));
@@ -8,17 +9,15 @@ export default function HomePage(props) {
   return (
     <>
       <div>
-        <div className="header">
+        <div className="">
           <Header />
         </div>
-        <div className="container" style={{ height: "100vh" }}>
-          <div className="row">
-            
-          </div>
+        <div className="container" >
+          <SearchBox />
         </div>
-        <div className="footer">
+        {/* <div className="footer">
           <Footer />
-        </div>
+        </div> */}
       </div>
     </>
   );
