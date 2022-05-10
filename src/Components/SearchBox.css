@@ -3,7 +3,7 @@
 
 .center {
     text-align: center;
-    background-color: lightblue;
+    background-color: #f1fafd;
     border-radius: 10px;
     margin: auto;
     width: 50%;
@@ -11,3 +11,45 @@
     box-shadow: 1px 1px 10px lightblue;
 }
 
+.search-box-li li{
+    list-style: none;
+}
+
+.search-box-li li a{
+    color: black;
+}
+.search-box-li li:hover a{
+    background-color: #e0e0d3;
+}
+
+/*------------------------------------------------------------------ */
+.search-input-div input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  .search-input-div button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+  
+  .search-input-div button:hover {
+    background: #0b7dda;
+  }
+  
+  .search-input-div::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
