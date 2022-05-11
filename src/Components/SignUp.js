@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function SignUp(props) {
+
+  useEffect(() => { console.log(props) }, []);
+
+
+
   // State to store value from the input field
   const [userData, setUserData] = useState({
     userName: "",

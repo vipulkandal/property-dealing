@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp.js";
 import Login from "./Components/Login";
 import HomePage from "./Components/HomePage";
 import WrongURL from "./Components/WrongURL";
+import PropertyList from "./pages/property-listing";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/HomePage" element={<PrivateRoute component={HomePage} />} />
           <Route path="/" element={<Login />} />
+          <Route path="PropertyList" element={<PropertyList />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/*" element={<WrongURL />} />
