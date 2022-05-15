@@ -1,33 +1,44 @@
 import React, { useState } from 'react'
-import { useNavigate  } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import "./SearchBox.css";
+import PropertyList from '../pages/property-listing';
 
 export default function SearchBox() {
   const [searchQuery, setSearchQuery] = useState("");
-  let navigate = useNavigate ();
+  const [searchType, setsearchType] = useState("buy");
+  const [showSearchResult, setShowSearchResult] = useState(false);
 
   const handleSearch = (e) => {
-    navigate("/PropertyList", {state: searchQuery});
+    e.preventDefault();
+    setShowSearchResult(true);
+  }
+
+  // search type: buy, sell , rent , PG
+  const searchTypeHandler = (e)=>{
+
   }
   return (
     <>
       <div className='row search-box-outer-box'>
         <div className='center'>
-          <div className='search-box-li'>
-            <li><a href="#buy">Buy</a></li>
-            <li><a href="#sell">Sell</a></li>
-            <li><a href="#rent">Rent</a></li>
-            <li><a href="#pg">PG / Co-living</a></li>
+          <div className='search-box-li' onClick={(e)=> searchTypeHandler(e)}>
+            <li>Buy</li>
+            <li>Sell</li>
+            <li>Rent</li>
+            <li>PG / Co-living</li>
           </div>
-          <div className='search-input-div'>
+          <form onSubmit={(e)=>handleSearch(e) } className='search-input-div'>
             <input type="text" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} placeholder="Search.." name="search" autoComplete='off' />
-            <button type="submit" onClick={handleSearch}>
+            <button type="submit"  >
               <FontAwesomeIcon icon={faSearch} />
             </button>
-          </div>
+          </form>
         </div>
+        {
+          showSearchResult ? <PropertyList searchQuery={searchQuery}/> : ""
+        }
+          
       </div>
     </>
   )

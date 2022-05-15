@@ -13,13 +13,13 @@
 
 .search-box-li li{
     list-style: none;
+    color: black;
+    padding: 0px 30px 0px 10px;
 }
 
-.search-box-li li a{
-    color: black;
-}
-.search-box-li li:hover a{
+.search-box-li li:hover {
     background-color: #e0e0d3;
+    cursor: pointer;
 }
 
 /*------------------------------------------------------------------ */

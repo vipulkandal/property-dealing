@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import "./property-listing.css";
 
 
-export default function PropertyList() {
+export default function PropertyList(props) {
 
   const propertyListingData = [
     {
@@ -54,18 +54,14 @@ export default function PropertyList() {
 
   const [searchResult, setSearchResult] = useState([]);
   const location = useLocation();
-  const searchQuery = location.state;
+  const {searchQuery} = props;
 
   useEffect(() => {
     let result = propertyListingData.filter(propertyListingData => propertyListingData.city === searchQuery);
-    console.log(result);
     setSearchResult(result);
   }, []);
-
   return (
     <>
-      <h1>This is PropertyList</h1>
-
       <div className='container'>
         <div className=''>
           {
